@@ -1,0 +1,8 @@
+{
+  "name": "USSD-On-Blockchain",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Sam-Devs/USSD-On-Blockchain.git",
+  "author": "Sam Ayorinde <ayorindesam2@gmail.com>",
+  "license": "MIT"
+}
