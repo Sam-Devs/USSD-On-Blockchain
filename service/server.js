@@ -1,23 +1,25 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
-const cluster = process.env.Cluster;
-const dbName = process.env.DBName;
+async function mongoDB() {
 
-async function dataBase() {
-    const uri = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbName}?retryWrites=true&w=majority`
+  const uri = "mongodb+srv://USSDDB:USSDDB@ussd.xipcj.mongodb.net/USSD?retryWrites=true&w=majority";
 
-    try {
-        await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useFindAndModify: false,
-            useUnifiedTopology: true
-        })
-        console.log("Database Connected");
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    // Connect to the MongoDB cluster
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+    });
+
+    console.log(" db connected")
+  } catch (e) {
+    console.error(e);
+  } finally {
+    // await client.close();
+  }
 }
-dataBase();
+
+mongoDB();
+
