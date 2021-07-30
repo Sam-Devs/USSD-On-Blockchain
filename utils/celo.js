@@ -29,8 +29,13 @@ const createAccount = async () => {
 }
 
 const balance = async(account) => {
-    const accountBalance = await kit.web3.eth.getBalance(account);
-    console.log(accountBalance);
+    try{
+        const accountBalance = await kit.web3.eth.getBalance(account);
+        // console.log(accountBalance);
+        return accountBalance;
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 module.exports = { createAccount, totalBalance}
