@@ -7,8 +7,30 @@ const web3 = new Web3(rpc);
 
 const kit = ContractKit.newKit(rpc);
 
-const createAccount = async () => {
-    const account = await kit.web3.eth.accounts.create();
-    console.log(account);
+// const address = "0x52DBDfa46Cd6AeC23e248c3D2cec723830D227CD"
+
+const totalBalance = async (address) => {
+    try {
+        const balance = await kit.getTotalBalance(address);
+        console.log(balance);
+        // console.log(balance[0]);
+    } catch (error) {
+        console.log(error);
+    }
 }
-createAccount();
+
+const createAccount = async () => {
+    try {
+        const account = await kit.web3.eth.accounts.create();
+        console.log(account); 
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const balance = async(account) => {
+    const accountBalance = await kit.web3.eth.getBalance(account);
+    console.log(accountBalance);
+}
+
+module.exports = { createAccount, totalBalance}
